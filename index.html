@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
 
@@ -8,7 +8,6 @@
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
-
 
 <title>
 BIRLA OPEN MINDS - Audio Transcription
@@ -34,32 +33,31 @@ body {
   background:
     linear-gradient(
       135deg,
-      #f5f7fb,
-      #eef2f7
+      #f4f7fb,
+      #e8eef7
     );
 
   min-height: 100vh;
 
-  padding: 25px;
+  padding: 30px;
 
 }
 
 
 .container {
 
-  max-width: 700px;
+  max-width: 900px;
 
-  margin:
-    20px auto;
+  margin: auto;
 
   background: white;
 
   border-radius: 18px;
 
-  padding: 30px;
+  padding: 35px;
 
   box-shadow:
-    0 8px 30px
+    0 10px 35px
     rgba(0,0,0,0.12);
 
 }
@@ -74,24 +72,38 @@ body {
 }
 
 
-.logo {
+.header h1 {
+
+  margin: 0;
 
   font-size: 32px;
 
-  font-weight: bold;
-
-  letter-spacing: 1px;
+  color: #1f3c88;
 
 }
 
 
-.subtitle {
+.header h2 {
 
   margin-top: 8px;
 
-  color: #666;
+  font-size: 20px;
 
-  font-size: 16px;
+  color: #555;
+
+}
+
+
+.header p {
+
+  color: #777;
+
+}
+
+
+.form-group {
+
+  margin-bottom: 20px;
 
 }
 
@@ -100,9 +112,11 @@ label {
 
   display: block;
 
-  margin-top: 18px;
-
   font-weight: bold;
+
+  margin-bottom: 8px;
+
+  color: #333;
 
 }
 
@@ -112,30 +126,23 @@ select {
 
   width: 100%;
 
-  padding: 14px;
-
-  margin-top: 7px;
+  padding: 13px;
 
   border: 1px solid #ccc;
 
-  border-radius: 9px;
+  border-radius: 8px;
 
   font-size: 16px;
 
 }
 
 
-.file-box {
+input:focus,
+select:focus {
 
-  margin-top: 10px;
+  outline: none;
 
-  padding: 18px;
-
-  border: 2px dashed #bbb;
-
-  border-radius: 10px;
-
-  text-align: center;
+  border-color: #1f3c88;
 
 }
 
@@ -144,15 +151,13 @@ button {
 
   width: 100%;
 
-  margin-top: 25px;
-
   padding: 15px;
 
   border: none;
 
   border-radius: 9px;
 
-  background: #1a73e8;
+  background: #1f3c88;
 
   color: white;
 
@@ -167,7 +172,7 @@ button {
 
 button:hover {
 
-  background: #1557b0;
+  opacity: 0.9;
 
 }
 
@@ -183,57 +188,46 @@ button:disabled {
 
 .status {
 
-  display: none;
-
   margin-top: 20px;
 
   padding: 14px;
 
-  border-radius: 9px;
+  border-radius: 8px;
+
+  background: #f1f5f9;
+
+  display: none;
 
   text-align: center;
 
 }
 
 
-.status.success {
-
-  display: block;
-
-  background: #e6f4ea;
-
-  color: #137333;
-
-}
-
-
-.status.error {
-
-  display: block;
-
-  background: #fce8e6;
-
-  color: #c5221f;
-
-}
-
-
-.status.loading {
-
-  display: block;
-
-  background: #e8f0fe;
-
-  color: #174ea6;
-
-}
-
-
 .results {
+
+  margin-top: 30px;
 
   display: none;
 
-  margin-top: 25px;
+}
+
+
+.result-box {
+
+  margin-top: 18px;
+
+}
+
+
+.result-title {
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  margin-bottom: 8px;
+
+  color: #333;
 
 }
 
@@ -242,30 +236,19 @@ textarea {
 
   width: 100%;
 
-  min-height: 150px;
-
-  padding: 12px;
-
-  margin-top: 7px;
-
-  border: 1px solid #ccc;
-
-  border-radius: 9px;
-
-  font-size: 15px;
+  min-height: 140px;
 
   resize: vertical;
 
-}
+  padding: 14px;
 
+  border: 1px solid #ccc;
 
-.result-title {
+  border-radius: 8px;
 
-  margin-top: 20px;
+  font-size: 15px;
 
-  font-size: 18px;
-
-  font-weight: bold;
+  line-height: 1.5;
 
 }
 
@@ -274,7 +257,7 @@ textarea {
 
   text-align: center;
 
-  margin-top: 25px;
+  margin-top: 30px;
 
   color: #888;
 
@@ -296,66 +279,73 @@ textarea {
 
   <div class="header">
 
-    <div class="logo">
-      BIRLA OPEN MINDS
-    </div>
+    <h1>BIRLA OPEN MINDS</h1>
 
-    <div class="subtitle">
-      Audio to Text Transcription
-    </div>
+    <h2>Audio Transcription System</h2>
+
+    <p>
+      Upload an audio file and convert the conversation into text.
+    </p>
 
   </div>
 
 
   <!-- STUDENT NAME -->
 
-  <label>
-    Student Name
-  </label>
+  <div class="form-group">
 
-  <input
-    type="text"
-    id="studentName"
-    placeholder="Enter student name"
-  >
+    <label for="studentName">
+      Student Name
+    </label>
+
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Enter student name"
+    >
+
+  </div>
 
 
   <!-- GRADE -->
 
-  <label>
-    Grade
-  </label>
+  <div class="form-group">
 
-  <select id="grade">
+    <label for="grade">
+      Grade
+    </label>
 
-    <option value="">
-      Select Grade
-    </option>
+    <select id="grade">
 
-    <option>Grade 1</option>
-    <option>Grade 2</option>
-    <option>Grade 3</option>
-    <option>Grade 4</option>
-    <option>Grade 5</option>
-    <option>Grade 6</option>
-    <option>Grade 7</option>
-    <option>Grade 8</option>
-    <option>Grade 9</option>
-    <option>Grade 10</option>
-    <option>Grade 11</option>
-    <option>Grade 12</option>
+      <option value="">
+        Select Grade
+      </option>
 
-  </select>
+      <option value="Grade 1">Grade 1</option>
+      <option value="Grade 2">Grade 2</option>
+      <option value="Grade 3">Grade 3</option>
+      <option value="Grade 4">Grade 4</option>
+      <option value="Grade 5">Grade 5</option>
+      <option value="Grade 6">Grade 6</option>
+      <option value="Grade 7">Grade 7</option>
+      <option value="Grade 8">Grade 8</option>
+      <option value="Grade 9">Grade 9</option>
+      <option value="Grade 10">Grade 10</option>
+      <option value="Grade 11">Grade 11</option>
+      <option value="Grade 12">Grade 12</option>
 
+    </select>
 
-  <!-- AUDIO -->
-
-  <label>
-    Select Audio File
-  </label>
+  </div>
 
 
-  <div class="file-box">
+  <!-- AUDIO FILE -->
+
+  <div class="form-group">
+
+    <label for="audioFile">
+      Select Audio File
+    </label>
 
     <input
       type="file"
@@ -380,46 +370,71 @@ textarea {
   <!-- STATUS -->
 
   <div
-    id="status"
-    class="status">
+    class="status"
+    id="status">
+
   </div>
 
 
   <!-- RESULTS -->
 
   <div
-    id="results"
-    class="results">
+    class="results"
+    id="results">
 
 
-    <div class="result-title">
-      Complete Transcript
+    <!-- COMPLETE TRANSCRIPT -->
+
+    <div class="result-box">
+
+      <div class="result-title">
+
+        Complete Transcript
+
+      </div>
+
+      <textarea
+        id="completeTranscript"
+        readonly>
+      </textarea>
+
     </div>
 
-    <textarea
-      id="transcript"
-      readonly>
-    </textarea>
 
+    <!-- PERSON 1 -->
 
-    <div class="result-title">
-      Person 1
+    <div class="result-box">
+
+      <div class="result-title">
+
+        Person 1
+
+      </div>
+
+      <textarea
+        id="person1"
+        readonly>
+      </textarea>
+
     </div>
 
-    <textarea
-      id="person1"
-      readonly>
-    </textarea>
 
+    <!-- PERSON 2 -->
 
-    <div class="result-title">
-      Person 2
+    <div class="result-box">
+
+      <div class="result-title">
+
+        Person 2
+
+      </div>
+
+      <textarea
+        id="person2"
+        readonly>
+      </textarea>
+
     </div>
-
-    <textarea
-      id="person2"
-      readonly>
-    </textarea>
 
 
   </div>
@@ -427,7 +442,7 @@ textarea {
 
   <div class="footer">
 
-    BIRLA OPEN MINDS
+    BIRLA OPEN MINDS INTERNATIONAL SCHOOL
 
   </div>
 
@@ -435,61 +450,70 @@ textarea {
 </div>
 
 
+
 <script>
 
 
-// =====================================================
-// IMPORTANT
-// =====================================================
-//
-// Paste your Google Apps Script Web App URL below.
-//
-// It should look like:
-//
-// https://script.google.com/macros/s/XXXXXXXX/exec
-//
-// =====================================================
-
+// ============================================================
+// YOUR GOOGLE APPS SCRIPT WEB APP URL
+// ============================================================
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzctLdkvCTIsD9VNdGaypmQauFbuh9DPcKtPwe_LqIb-9IYLjG2LTjYo57j5AgUa69f3g/exec";
+"https://script.google.com/macros/s/AKfycbyOoxOs6tVhcYAyGFDeRylglXtWA_a8Lv5iVDQUD07N2EAfWQR8_21jjnPHFJiCEBOu8g/exec";
 
 
-// =====================================================
-// CONVERT AUDIO
-// =====================================================
+
+// ============================================================
+// MAIN FUNCTION
+// ============================================================
 
 async function convertAudio() {
 
 
   const studentName =
-    document
-      .getElementById("studentName")
-      .value
-      .trim();
+    document.getElementById(
+      "studentName"
+    ).value.trim();
 
 
   const grade =
-    document
-      .getElementById("grade")
-      .value;
+    document.getElementById(
+      "grade"
+    ).value;
 
 
-  const file =
-    document
-      .getElementById("audioFile")
-      .files[0];
+  const audioInput =
+    document.getElementById(
+      "audioFile"
+    );
 
 
-  // ---------------------------------------------------
+  const button =
+    document.getElementById(
+      "convertButton"
+    );
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  const results =
+    document.getElementById(
+      "results"
+    );
+
+
+  // ----------------------------------------------------------
   // VALIDATION
-  // ---------------------------------------------------
+  // ----------------------------------------------------------
 
   if (!studentName) {
 
-    showStatus(
-      "Please enter the student name.",
-      "error"
+    alert(
+      "Please enter the student name."
     );
 
     return;
@@ -499,21 +523,8 @@ async function convertAudio() {
 
   if (!grade) {
 
-    showStatus(
-      "Please select the grade.",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  if (!file) {
-
-    showStatus(
-      "Please select an audio file.",
-      "error"
+    alert(
+      "Please select the grade."
     );
 
     return;
@@ -522,14 +533,12 @@ async function convertAudio() {
 
 
   if (
-    GOOGLE_SCRIPT_URL.includes(
-      "PASTE_YOUR"
-    )
+    !audioInput.files ||
+    audioInput.files.length === 0
   ) {
 
-    showStatus(
-      "Please add your Google Apps Script Web App URL.",
-      "error"
+    alert(
+      "Please select an audio file."
     );
 
     return;
@@ -537,46 +546,71 @@ async function convertAudio() {
   }
 
 
-  // ---------------------------------------------------
-  // BUTTON
-  // ---------------------------------------------------
+  const file =
+    audioInput.files[0];
 
-  const button =
-    document
-      .getElementById(
-        "convertButton"
-      );
 
+  // ----------------------------------------------------------
+  // FILE SIZE CHECK
+  // ----------------------------------------------------------
+
+  const maxSize =
+    20 * 1024 * 1024;
+
+
+  if (file.size > maxSize) {
+
+    alert(
+      "Please select an audio file smaller than 20 MB."
+    );
+
+    return;
+
+  }
+
+
+  // ----------------------------------------------------------
+  // START
+  // ----------------------------------------------------------
 
   button.disabled = true;
 
-
   button.textContent =
-    "Converting... Please wait";
+    "Converting...";
 
 
-  showStatus(
-    "Uploading audio and converting it to text...",
-    "loading"
-  );
+  status.style.display =
+    "block";
+
+
+  status.textContent =
+    "Reading audio file...";
+
+
+  results.style.display =
+    "none";
 
 
   try {
 
 
-    // -------------------------------------------------
-    // CONVERT FILE TO BASE64
-    // -------------------------------------------------
+    // --------------------------------------------------------
+    // READ FILE
+    // --------------------------------------------------------
 
-    const base64 =
+    const base64Audio =
       await fileToBase64(file);
 
 
-    // -------------------------------------------------
-    // CREATE REQUEST
-    // -------------------------------------------------
+    status.textContent =
+      "Sending audio for transcription...";
 
-    const data = {
+
+    // --------------------------------------------------------
+    // CREATE DATA
+    // --------------------------------------------------------
+
+    const requestData = {
 
       studentName:
         studentName,
@@ -588,14 +622,14 @@ async function convertAudio() {
         file.name,
 
       audioBase64:
-        base64
+        base64Audio
 
     };
 
 
-    // -------------------------------------------------
+    // --------------------------------------------------------
     // SEND TO GOOGLE APPS SCRIPT
-    // -------------------------------------------------
+    // --------------------------------------------------------
 
     const response =
       await fetch(
@@ -612,7 +646,9 @@ async function convertAudio() {
           },
 
           body:
-            JSON.stringify(data)
+            JSON.stringify(
+              requestData
+            )
 
         }
       );
@@ -621,7 +657,7 @@ async function convertAudio() {
     if (!response.ok) {
 
       throw new Error(
-        "Server error: " +
+        "Server returned error: " +
         response.status
       );
 
@@ -632,9 +668,9 @@ async function convertAudio() {
       await response.json();
 
 
-    // -------------------------------------------------
+    // --------------------------------------------------------
     // CHECK RESULT
-    // -------------------------------------------------
+    // --------------------------------------------------------
 
     if (!result.success) {
 
@@ -646,38 +682,34 @@ async function convertAudio() {
     }
 
 
-    // -------------------------------------------------
-    // SHOW TRANSCRIPT
-    // -------------------------------------------------
+    // --------------------------------------------------------
+    // SHOW RESULTS
+    // --------------------------------------------------------
 
-    document
-      .getElementById("transcript")
-      .value =
+    document.getElementById(
+      "completeTranscript"
+    ).value =
       result.transcript || "";
 
 
-    document
-      .getElementById("person1")
-      .value =
+    document.getElementById(
+      "person1"
+    ).value =
       result.person1 || "";
 
 
-    document
-      .getElementById("person2")
-      .value =
+    document.getElementById(
+      "person2"
+    ).value =
       result.person2 || "";
 
 
-    document
-      .getElementById("results")
-      .style.display =
+    results.style.display =
       "block";
 
 
-    showStatus(
-      "Success! Transcript saved to Google Sheets.",
-      "success"
-    );
+    status.textContent =
+      "✓ Audio converted successfully and saved to Google Sheets.";
 
 
   } catch (error) {
@@ -686,33 +718,35 @@ async function convertAudio() {
     console.error(error);
 
 
-    showStatus(
+    status.textContent =
       "ERROR: " +
-      error.message,
-      "error"
-    );
+      error.message;
+
+
+  } finally {
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "Convert Audio to Text";
 
   }
-
-
-  button.disabled = false;
-
-
-  button.textContent =
-    "Convert Audio to Text";
 
 }
 
 
-// =====================================================
+
+// ============================================================
 // FILE → BASE64
-// =====================================================
+// ============================================================
 
 function fileToBase64(file) {
 
   return new Promise(
     function(resolve, reject) {
-
 
       const reader =
         new FileReader();
@@ -721,17 +755,30 @@ function fileToBase64(file) {
       reader.onload =
         function() {
 
-          resolve(
-            reader.result
-          );
+          const result =
+            reader.result;
+
+
+          // IMPORTANT:
+          // Send ONLY Base64, not data:audio/... prefix.
+
+          const base64 =
+            result.split(",")[1];
+
+
+          resolve(base64);
 
         };
 
 
       reader.onerror =
-        function(error) {
+        function() {
 
-          reject(error);
+          reject(
+            new Error(
+              "Could not read the audio file."
+            )
+          );
 
         };
 
@@ -740,31 +787,6 @@ function fileToBase64(file) {
 
     }
   );
-
-}
-
-
-// =====================================================
-// STATUS MESSAGE
-// =====================================================
-
-function showStatus(
-  message,
-  type
-) {
-
-
-  const status =
-    document
-      .getElementById("status");
-
-
-  status.textContent =
-    message;
-
-
-  status.className =
-    "status " + type;
 
 }
 
