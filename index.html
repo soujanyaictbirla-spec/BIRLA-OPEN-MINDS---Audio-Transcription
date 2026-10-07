@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+
+<title>
+BIRLA OPEN MINDS - Audio Transcription
+</title>
+
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+
+  margin: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f7fb,
+      #eef2f7
+    );
+
+  min-height: 100vh;
+
+  padding: 25px;
+
+}
+
+
+.container {
+
+  max-width: 700px;
+
+  margin:
+    20px auto;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 8px 30px
+    rgba(0,0,0,0.12);
+
+}
+
+
+.header {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+}
+
+
+.logo {
+
+  font-size: 32px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+}
+
+
+.subtitle {
+
+  margin-top: 8px;
+
+  color: #666;
+
+  font-size: 16px;
+
+}
+
+
+label {
+
+  display: block;
+
+  margin-top: 18px;
+
+  font-weight: bold;
+
+}
+
+
+input,
+select {
+
+  width: 100%;
+
+  padding: 14px;
+
+  margin-top: 7px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+}
+
+
+.file-box {
+
+  margin-top: 10px;
+
+  padding: 18px;
+
+  border: 2px dashed #bbb;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+}
+
+
+button {
+
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #1a73e8;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+
+button:hover {
+
+  background: #1557b0;
+
+}
+
+
+button:disabled {
+
+  background: #999;
+
+  cursor: not-allowed;
+
+}
+
+
+.status {
+
+  display: none;
+
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border-radius: 9px;
+
+  text-align: center;
+
+}
+
+
+.status.success {
+
+  display: block;
+
+  background: #e6f4ea;
+
+  color: #137333;
+
+}
+
+
+.status.error {
+
+  display: block;
+
+  background: #fce8e6;
+
+  color: #c5221f;
+
+}
+
+
+.status.loading {
+
+  display: block;
+
+  background: #e8f0fe;
+
+  color: #174ea6;
+
+}
+
+
+.results {
+
+  display: none;
+
+  margin-top: 25px;
+
+}
+
+
+textarea {
+
+  width: 100%;
+
+  min-height: 150px;
+
+  padding: 12px;
+
+  margin-top: 7px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 9px;
+
+  font-size: 15px;
+
+  resize: vertical;
+
+}
+
+
+.result-title {
+
+  margin-top: 20px;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+}
+
+
+.footer {
+
+  text-align: center;
+
+  margin-top: 25px;
+
+  color: #888;
+
+  font-size: 13px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+  <div class="header">
+
+    <div class="logo">
+      BIRLA OPEN MINDS
+    </div>
+
+    <div class="subtitle">
+      Audio to Text Transcription
+    </div>
+
+  </div>
+
+
+  <!-- STUDENT NAME -->
+
+  <label>
+    Student Name
+  </label>
+
+  <input
+    type="text"
+    id="studentName"
+    placeholder="Enter student name"
+  >
+
+
+  <!-- GRADE -->
+
+  <label>
+    Grade
+  </label>
+
+  <select id="grade">
+
+    <option value="">
+      Select Grade
+    </option>
+
+    <option>Grade 1</option>
+    <option>Grade 2</option>
+    <option>Grade 3</option>
+    <option>Grade 4</option>
+    <option>Grade 5</option>
+    <option>Grade 6</option>
+    <option>Grade 7</option>
+    <option>Grade 8</option>
+    <option>Grade 9</option>
+    <option>Grade 10</option>
+    <option>Grade 11</option>
+    <option>Grade 12</option>
+
+  </select>
+
+
+  <!-- AUDIO -->
+
+  <label>
+    Select Audio File
+  </label>
+
+
+  <div class="file-box">
+
+    <input
+      type="file"
+      id="audioFile"
+      accept="audio/*"
+    >
+
+  </div>
+
+
+  <!-- BUTTON -->
+
+  <button
+    id="convertButton"
+    onclick="convertAudio()">
+
+    Convert Audio to Text
+
+  </button>
+
+
+  <!-- STATUS -->
+
+  <div
+    id="status"
+    class="status">
+  </div>
+
+
+  <!-- RESULTS -->
+
+  <div
+    id="results"
+    class="results">
+
+
+    <div class="result-title">
+      Complete Transcript
+    </div>
+
+    <textarea
+      id="transcript"
+      readonly>
+    </textarea>
+
+
+    <div class="result-title">
+      Person 1
+    </div>
+
+    <textarea
+      id="person1"
+      readonly>
+    </textarea>
+
+
+    <div class="result-title">
+      Person 2
+    </div>
+
+    <textarea
+      id="person2"
+      readonly>
+    </textarea>
+
+
+  </div>
+
+
+  <div class="footer">
+
+    BIRLA OPEN MINDS
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+// =====================================================
+// IMPORTANT
+// =====================================================
+//
+// Paste your Google Apps Script Web App URL below.
+//
+// It should look like:
+//
+// https://script.google.com/macros/s/XXXXXXXX/exec
+//
+// =====================================================
+
+
+const GOOGLE_SCRIPT_URL =
+  "https://docs.google.com/spreadsheets/d/1RFDujNntoCnGTMsXGt6hmI0VhgY-WsfYFZXcfk-fhPI/edit?gid=0#gid=0";
+
+
+// =====================================================
+// CONVERT AUDIO
+// =====================================================
+
+async function convertAudio() {
+
+
+  const studentName =
+    document
+      .getElementById("studentName")
+      .value
+      .trim();
+
+
+  const grade =
+    document
+      .getElementById("grade")
+      .value;
+
+
+  const file =
+    document
+      .getElementById("audioFile")
+      .files[0];
+
+
+  // ---------------------------------------------------
+  // VALIDATION
+  // ---------------------------------------------------
+
+  if (!studentName) {
+
+    showStatus(
+      "Please enter the student name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!grade) {
+
+    showStatus(
+      "Please select the grade.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!file) {
+
+    showStatus(
+      "Please select an audio file.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (
+    GOOGLE_SCRIPT_URL.includes(
+      "PASTE_YOUR"
+    )
+  ) {
+
+    showStatus(
+      "Please add your Google Apps Script Web App URL.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  // ---------------------------------------------------
+  // BUTTON
+  // ---------------------------------------------------
+
+  const button =
+    document
+      .getElementById(
+        "convertButton"
+      );
+
+
+  button.disabled = true;
+
+
+  button.textContent =
+    "Converting... Please wait";
+
+
+  showStatus(
+    "Uploading audio and converting it to text...",
+    "loading"
+  );
+
+
+  try {
+
+
+    // -------------------------------------------------
+    // CONVERT FILE TO BASE64
+    // -------------------------------------------------
+
+    const base64 =
+      await fileToBase64(file);
+
+
+    // -------------------------------------------------
+    // CREATE REQUEST
+    // -------------------------------------------------
+
+    const data = {
+
+      studentName:
+        studentName,
+
+      grade:
+        grade,
+
+      fileName:
+        file.name,
+
+      audioBase64:
+        base64
+
+    };
+
+
+    // -------------------------------------------------
+    // SEND TO GOOGLE APPS SCRIPT
+    // -------------------------------------------------
+
+    const response =
+      await fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "text/plain;charset=utf-8"
+
+          },
+
+          body:
+            JSON.stringify(data)
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Server error: " +
+        response.status
+      );
+
+    }
+
+
+    const result =
+      await response.json();
+
+
+    // -------------------------------------------------
+    // CHECK RESULT
+    // -------------------------------------------------
+
+    if (!result.success) {
+
+      throw new Error(
+        result.error ||
+        "Transcription failed."
+      );
+
+    }
+
+
+    // -------------------------------------------------
+    // SHOW TRANSCRIPT
+    // -------------------------------------------------
+
+    document
+      .getElementById("transcript")
+      .value =
+      result.transcript || "";
+
+
+    document
+      .getElementById("person1")
+      .value =
+      result.person1 || "";
+
+
+    document
+      .getElementById("person2")
+      .value =
+      result.person2 || "";
+
+
+    document
+      .getElementById("results")
+      .style.display =
+      "block";
+
+
+    showStatus(
+      "Success! Transcript saved to Google Sheets.",
+      "success"
+    );
+
+
+  } catch (error) {
+
+
+    console.error(error);
+
+
+    showStatus(
+      "ERROR: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+
+  button.disabled = false;
+
+
+  button.textContent =
+    "Convert Audio to Text";
+
+}
+
+
+// =====================================================
+// FILE → BASE64
+// =====================================================
+
+function fileToBase64(file) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function() {
+
+          resolve(
+            reader.result
+          );
+
+        };
+
+
+      reader.onerror =
+        function(error) {
+
+          reject(error);
+
+        };
+
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+// =====================================================
+// STATUS MESSAGE
+// =====================================================
+
+function showStatus(
+  message,
+  type
+) {
+
+
+  const status =
+    document
+      .getElementById("status");
+
+
+  status.textContent =
+    message;
+
+
+  status.className =
+    "status " + type;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
